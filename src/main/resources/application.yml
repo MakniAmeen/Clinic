@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:clinicdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ""
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  sql:
+    init:
+      mode: never
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  mvc:
+    view:
+      prefix: /WEB-INF/vues/
+      suffix: .jsp
+
+server:
+  port: 8080
+
+# Configuration des APIs externes (simulées)
+api:
+  integration:
+    lab-url: "https://api.laboratory.com/v1"
+    pharmacy-url: "https://api.pharmacy.com/orders"
+    insurance-url: "https://api.insurance.com/claims"
+    timeout: 5000
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    com.clinic.appointment.Service: DEBUG
